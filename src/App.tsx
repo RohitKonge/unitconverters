@@ -5,6 +5,7 @@ import Header from './components/ui/Header';
 import Footer from './components/ui/Footer';
 import TermsOfService from './components/pages/TermsOfService';
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
+import SEO from './components/ui/SEO';
 
 type ConversionType = 'length' | 'temperature' | 'area' | 'volume' | 'weight';
 
@@ -14,6 +15,34 @@ function ConverterPage() {
   const [activeConverter, setActiveConverter] = useState<ConversionType>(
     (type as ConversionType) || 'length'
   );
+
+  const seoData = {
+    length: {
+      title: 'Length Converter - Convert Between Metric and Imperial Units',
+      description: 'Convert length measurements between meters, feet, inches, yards, kilometers, miles, and more. Free online length unit converter with instant results.',
+      type: 'length'
+    },
+    temperature: {
+      title: 'Temperature Converter - Convert Between Celsius, Fahrenheit, and Kelvin',
+      description: 'Convert temperature between Celsius (°C), Fahrenheit (°F), and Kelvin (K). Easy-to-use temperature conversion calculator with instant results.',
+      type: 'temperature'
+    },
+    area: {
+      title: 'Area Converter - Convert Square Meters, Square Feet, and More',
+      description: 'Convert area measurements between square meters, square feet, acres, hectares, and more. Free online area unit converter for quick calculations.',
+      type: 'area'
+    },
+    volume: {
+      title: 'Volume Converter - Convert Liters, Gallons, Cubic Meters',
+      description: 'Convert volume measurements between liters, gallons, cubic meters, and more. Simple volume unit converter for liquids and cubic measurements.',
+      type: 'volume'
+    },
+    weight: {
+      title: 'Weight Converter - Convert Between Kilograms, Pounds, and Ounces',
+      description: 'Convert weight (mass) between kilograms, pounds, ounces, grams, and more. Fast and accurate weight conversion calculator.',
+      type: 'weight'
+    }
+  };
 
   useEffect(() => {
     if (type && ['length', 'temperature', 'area', 'volume', 'weight'].includes(type)) {
@@ -26,8 +55,20 @@ function ConverterPage() {
     navigate(`/${newType}`);
   };
 
+  const currentSEO = type ? seoData[type as ConversionType] : {
+    title: 'Unit Converter - Free Online Unit Conversion Calculator',
+    description: 'Convert between different units of measurement instantly. Support for length, temperature, area, volume, and weight conversions. Free and easy to use.',
+    type: 'unit'
+  };
+
   return (
     <>
+      <SEO 
+        title={currentSEO.title}
+        description={currentSEO.description}
+        type={currentSEO.type}
+        canonicalUrl={`https://unitconverters.live${type ? `/${type}` : ''}`}
+      />
       <Header activeConverter={activeConverter} onConverterChange={handleConverterChange} />
       <main className="flex-1 flex flex-col items-center py-8 px-4">
         <div className="w-full max-w-3xl">

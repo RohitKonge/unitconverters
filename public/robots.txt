@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://unitconverters.live/sitemap.xml
+
+# Optimize crawling
+Crawl-delay: 1
