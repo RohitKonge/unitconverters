@@ -42,7 +42,7 @@ const Footer = () => {
             <Link to="/privacy" className="text-sm text-gray-600 hover:text-blue-800">Privacy Policy</Link>
           </div>
           <p className="text-sm text-gray-600">
-            © {new Date().getFullYear()} Unit Converter - All rights reserved
+            ©2002-{new Date().getFullYear()} Unit Converter - Adam Smith - All rights reserved
           </p>
         </div>
       </div>
