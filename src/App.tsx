@@ -1,18 +1,23 @@
+import { useState } from 'react';
 import UnitConverter from './components/UnitConverter';
 import Header from './components/ui/Header';
 import Footer from './components/ui/Footer';
 
+type ConversionType = 'length' | 'temperature' | 'area' | 'volume' | 'weight';
+
 function App() {
+  const [activeConverter, setActiveConverter] = useState<ConversionType>('length');
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
-      <Header />
+      <Header activeConverter={activeConverter} onConverterChange={setActiveConverter} />
       <main className="flex-1 flex flex-col items-center py-8 px-4">
         <div className="w-full max-w-3xl">
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
             <p className="text-gray-700 mb-6">
               Use this Conversion Calculator to convert between commonly used units. Select the current unit in the left column, the desired unit in the right column, and enter a value in the left column to generate the resulting conversion.
             </p>
-            <UnitConverter />
+            <UnitConverter activeTab={activeConverter} onTabChange={setActiveConverter} />
           </div>
           
           <div className="bg-white rounded-lg shadow-md p-6 prose prose-sm max-w-none">

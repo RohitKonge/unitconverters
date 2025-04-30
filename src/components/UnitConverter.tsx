@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LengthConverter from './converters/LengthConverter';
 import TemperatureConverter from './converters/TemperatureConverter';
 import AreaConverter from './converters/AreaConverter';
@@ -7,9 +7,12 @@ import WeightConverter from './converters/WeightConverter';
 
 type ConversionType = 'length' | 'temperature' | 'area' | 'volume' | 'weight';
 
-const UnitConverter: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ConversionType>('length');
+interface UnitConverterProps {
+  activeTab: ConversionType;
+  onTabChange: (type: ConversionType) => void;
+}
 
+const UnitConverter: React.FC<UnitConverterProps> = ({ activeTab, onTabChange }) => {
   const tabs: { id: ConversionType; label: string }[] = [
     { id: 'length', label: 'Length' },
     { id: 'temperature', label: 'Temperature' },
@@ -29,7 +32,7 @@ const UnitConverter: React.FC = () => {
                 ? 'bg-blue-600 text-white'
                 : 'bg-blue-100 text-blue-800 hover:bg-blue-200'
             }`}
-            onClick={() => setActiveTab(tab.id)}
+            onClick={() => onTabChange(tab.id)}
           >
             {tab.label}
           </button>
