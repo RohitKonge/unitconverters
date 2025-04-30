@@ -1,5 +1,5 @@
-import React from 'react';
 import { Github, Mail, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -36,8 +36,13 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-gray-200 mt-8 pt-6 text-center">
+          <div className="mb-3 flex justify-center space-x-4">
+            <Link to="/terms" className="text-sm text-gray-600 hover:text-blue-800">Terms of Use</Link>
+            <span className="text-gray-400">|</span>
+            <Link to="/privacy" className="text-sm text-gray-600 hover:text-blue-800">Privacy Policy</Link>
+          </div>
           <p className="text-sm text-gray-600">
-            © 2002-{new Date().getFullYear()} Unit Converter - All rights reserved
+            © {new Date().getFullYear()} Unit Converter - All rights reserved
           </p>
         </div>
       </div>

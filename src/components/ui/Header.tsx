@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 type ConversionType = 'length' | 'temperature' | 'area' | 'volume' | 'weight';
 
@@ -19,10 +20,10 @@ const Header: React.FC<HeaderProps> = ({ activeConverter, onConverterChange }) =
   return (
     <header className="w-full bg-white shadow-sm py-4 px-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <img src="public/unitconverter.svg" alt="Unit Converter Logo" className="h-8 w-8" />
+        <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
+          <img src="/unitconverter.svg" alt="Unit Converter Logo" className="h-8 w-8" />
           <h1 className="text-2xl font-bold text-blue-800">Unit Converter</h1>
-        </div>
+        </Link>
         <nav>
           <ul className="flex gap-6">
             {converters.map((converter) => (
